@@ -8,6 +8,13 @@ DB_CONFIG = {
     "host": "localhost",
     "port": 5432
 }
+def wyczysc_baze():
+    conn = psycopg2.connect(**DB_CONFIG)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM zakupy")
+    conn.commit()
+    cur.close()
+    conn.close()
 
 def get_zakupy():
     conn = psycopg2.connect(**DB_CONFIG)
